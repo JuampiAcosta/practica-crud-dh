@@ -7,14 +7,26 @@
     },
     {
         "id": 2,
-        "name": "Risotto",
-        "description": "Risotto con berenjena y queso de cabra",
-        "price": 800
+        "name": "Risottil",
+        "description": "Risotto con berenjena y queso de cabra ",
+        "price": "805"
     },
     {
         "id": 3,
         "name": "Milanesa",
         "price": "500",
         "description": "La mejor milanesa"
+    },
+    {
+        "id": 4,
+        "name": "regerger",
+        "price": "233",
+        "description": "ergrege"
+    },
+    {
+        "id": 5,
+        "name": "sdvldv ",
+        "price": "557 ",
+        "description": "yt "
     }
 ]

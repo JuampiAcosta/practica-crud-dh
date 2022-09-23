@@ -1,11 +1,5 @@
 [
     {
-        "id": 1,
-        "name": "Esparragos",
-        "description": "asdasd",
-        "price": "600"
-    },
-    {
         "id": 2,
         "name": "Risottil",
         "description": "Risotto con berenjena y queso de cabra ",
@@ -22,11 +16,5 @@
         "name": "regerger",
         "price": "233",
         "description": "ergrege"
-    },
-    {
-        "id": 5,
-        "name": "sdvldv ",
-        "price": "557 ",
-        "description": "yt "
     }
 ]

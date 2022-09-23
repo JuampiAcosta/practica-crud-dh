@@ -37,7 +37,8 @@ const data= findAll()
   id:data.length+1,
   name:req.body.name,
   price:req.body.price,
-  description:req.body.description
+  description:req.body.description,
+  image:req.file.filename
  }
 data.push(newProduct);
 WriteFile(data)
@@ -65,6 +66,18 @@ update:(req,res)=>{
   WriteFile(data)
 
   res.redirect("/products/list")
+},
+destroy:(req,res)=>{
+
+ const data=findAll()
+const platoEncontrado=data.findIndex(function (plato) {
+  return plato.id==req.params.id
+})
+
+data.splice(platoEncontrado,1);
+
+WriteFile(data);
+res.redirect("/products/list");
 }
 }
 

@@ -2,7 +2,7 @@ const { equal } = require("assert")
 const fs=require("fs")
 const { dirname } = require("path")
 const path=require("path")
-
+const {validationResult} =require("express-validator");
 function findAll(){
   const jsonData =  fs.readFileSync(path.join(__dirname,"../data/products.json"))
  const data= JSON.parse(jsonData)
@@ -32,7 +32,16 @@ res.render("product-create-form")
 
   },
 store:(req,res)=>{
-const data= findAll()
+const ValidationErrors= validationResult(req)
+if (!ValidationErrors.isEmpty()) {
+  console.log(ValidationErrors.mapped())
+res.render("product-create-form",{
+  errors:ValidationErrors.array(),
+  errors2:ValidationErrors.mapped(),
+  old:req.body
+})
+
+}else{const data= findAll()
  const newProduct={
   id:data.length+1,
   name:req.body.name,
@@ -42,7 +51,7 @@ const data= findAll()
  }
 data.push(newProduct);
 WriteFile(data)
-res.redirect("/products/create");
+res.redirect("/products/create");}
 },
 edit:(req,res)=>{
 

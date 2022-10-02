@@ -26,21 +26,41 @@
                 Creacion de producto:
             </h1>
             <div class="form-container">
+
+                <%if (locals.errors) {%>
+                    <ul>
+       <% errors.forEach(function(error) {%>
+       <li class="error-msg"><%= error.msg %> </li>
+        <% }) %> 
+    
+      </ul>
+              
+     <%}  %> 
                 <form action="/products/create" enctype="multipart/form-data"  method="POST">
           
                     <div class="field-wrap">
                         <label for="name">Nombre de plato:</label>
-                        <input type="text" name="name" id="name">
+                        <input type="text" name="name" value="<%= locals.old ? old.name :'' %>"  id="name">
+                    <% if(locals.errors2 && locals.errors2.name){ %> 
+                        <P> <%= errors2.name.msg %>  </P>
+                    <% } %> 
                     </div>
                       
                     <div class="field-wrap">
                         <label for="price">Precio:</label>
-                        <input type="text" name="price" id="price">
+                        <input type="text" name="price"   value="<%= locals.old ? old.price :'' %>"   id="price">
+                        <% if(locals.errors2 && locals.errors2.price ){ %> 
+                            <p> <%= errors2.price.msg %>  </p>
+                        <% } %> 
+                
                     </div>
                       
                     <div class="field-wrap" >
                         <label for="description">Descripcion:</label>
-                        <textarea name="description" id="description"></textarea>
+                        <textarea name="description"  id="description"><%= locals.old ? old.description :'' %></textarea>
+                        <% if(locals.errors2 && locals.errors2.description){ %> 
+                            <P> <%= errors2.description.msg %>  </P>
+                        <% } %> 
                     </div>
 
                       <div class="field-wrap">
@@ -51,9 +71,12 @@
                         <button type="submit">
                             Enviar
                         </button>
+                        <% if(locals.errors2 && locals.errors2.image){ %> 
+                            <P> <%= errors2.image.msg %>  </P>
+                        <% } %> 
                     </div>
-  
-                </form>
+ 
+              </form>
             </div>            
         </main>    
 
